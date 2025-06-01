@@ -2,15 +2,19 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CleanerUI extends JFrame {
+public class Systra extends JFrame {
 
     private JButton cleanTempButton;
     private JButton stopAppsButton;
     private JButton stopServicesButton;
     private JButton stopRecommendedServicesButton;
+    private JButton disableTransparencyButton;
+    private JButton activatePowerModeButton;
+    private JButton removeWindowsAppsButton;
 
     private JPanel appsPanel;
     private JPanel servicesPanel;
@@ -18,49 +22,54 @@ public class CleanerUI extends JFrame {
     private Map<String, String> appsMap = new LinkedHashMap<>();
     private Map<String, JCheckBox> appCheckBoxes = new LinkedHashMap<>();
 
+    // recommendedServiceCheckBoxes haritasının key'i artık hizmet kodu olarak kalıyor,
+    // biz checkbox üzerinde kullanıcı dostu adı gösteriyoruz.
     private Map<String, JCheckBox> recommendedServiceCheckBoxes = new LinkedHashMap<>();
+    // servicesMap: kullanıcı dostu isim -> hizmet kodu
     private Map<String, String> servicesMap = new LinkedHashMap<>();
 
+    // Bu dizide, kapatılması veya kontrol edilmesi hedeflenen hizmetlerin kodları yer alıyor.
     private final String[] recommendedServices = {
-            "SCardSvr", // Akıllı Kart Hizmeti
-            "ScDeviceEnum", // Akıllı Kart Cihaz Numaralandırma Hizmeti
-            "SCPolicySvc", // Akıllı Kart Kaldırma İlkesi
-            "XboxGipSvc", // Xbox Accessory Management Service
-            "XboxNetApiSvc", // Xbox Live Ağ Hizmeti
-            "XblAuthManager", // Xbox Live Kimlik Doğrulama Yöneticisi
-            "XblGameSave", // Xbox Live Oyun Kaydetme
-            "WpcMonSvc", // Ebeveyn Denetimleri
-            "WSearch", // Windows Search
-            "WPDBusEnum", // Taşınabilir Aygıt Numaralandırma Hizmeti
-            "WMPNetworkSvc", // Windows Media Player Ağ Paylaşımı Hizmeti
-            "WerSvc", // Windows Hata Raporlama Hizmeti
-            "wercplsupport", // Sorun Raporları Denetim Masası Desteği
-            "WdiSystemHost", // Tanılama Sistemi Ana Bilgisayarı
-            "upnphost", // UPnP Aygıt Ana Makinesi
-            "UmRdpService", // Uzak Masaüstü Hizmetleri Kullanıcı Modu Bağlantı Noktası Yeniden Yönlendiricisi
-            "TroubleshootingSvc", // Önerilen Sorun Giderme Hizmeti
-            "tzautoupdate", // Otomatik Saat Dilimi Güncelleştirici
-            "PcaSvc", // Program Uyumluluk Yardımcısı Hizmeti
-            "lfsvc", // Coğrafi Konum Hizmeti
-            "DusmSvc", // Veri Kullanımı
-            "DiagTrack", // Bağlı Kullanıcı Deneyimleri ve Telemetrisi
-            "SSDPSRV", // SSDP Bulma
-            "WalletService", // Cüzdan Hizmeti
-            "RetailDemo", // Perakende Gösteri Hizmeti
-            "PhoneSvc", // Telefon Hizmeti
-            "dmwappushservice", //Tanılama Mesajları
-            "Fax", // Faks Hizmeti
-            "RemoteRegistry", // Uzak Kayıt Defteri
-            "SharedAccess", // İnternet Bağlantısı Paylaşımı
-            "MapsBroker" // Haritalar uygulaması arka plan hizmeti
-
+            "SCardSvr",
+            "ScDeviceEnum",
+            "SCPolicySvc",  // Eğer bu kod için mapping yoksa, kod gösterilecektir.
+            "XboxGipSvc",
+            "XboxNetApiSvc",
+            "XblAuthManager",
+            "XblGameSave",
+            "WpcMonSvc",
+            "WSearch",
+            "WPDBusEnum",
+            "WMPNetworkSvc",
+            "WerSvc",
+            "wercplsupport",
+            "WdiSystemHost",
+            "upnphost",
+            "UmRdpService",
+            "TroubleshootingSvc",
+            "tzautoupdate",
+            "PcaSvc",
+            "lfsvc",
+            "DusmSvc",
+            "DiagTrack",
+            "SSDPSRV",
+            "WalletService",
+            "RetailDemo",
+            "PhoneSvc",
+            "dmwappushservice",
+            "Fax",
+            "RemoteRegistry",
+            "SharedAccess",
+            "MapsBroker"
     };
-    public CleanerUI() {
-        setTitle("CosmicAutomation");
-        setSize(600, 500);
+
+    public Systra() {
+        setTitle("Systra");
+        setSize(1000, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        // Uygulamalar için kullanıcı dostu isim -> process name eşleşmeleri
         appsMap.put("Ses Kaydedici", "SoundRecorder.exe");
         appsMap.put("Paint", "mspaint.exe");
         appsMap.put("Not Defteri", "notepad.exe");
@@ -80,6 +89,7 @@ public class CleanerUI extends JFrame {
         appsMap.put("Hesap Makinesi", "Calculator.exe");
         appsMap.put("Microsoft Store", "WinStore.App.exe");
 
+        // Hizmetler için kullanıcı dostu isim -> hizmet kodu eşleşmeleri
         servicesMap.put("Akıllı Kart Hizmeti", "SCardSvr");
         servicesMap.put("Battle Eye", "BEService");
         servicesMap.put("Akıllı Kart Cihaz Numaralandırma Hizmeti", "ScDeviceEnum");
@@ -108,36 +118,55 @@ public class CleanerUI extends JFrame {
         servicesMap.put("Perakende Gösteri Hizmeti", "RetailDemo");
         servicesMap.put("Telefon Hizmeti", "PhoneSvc");
 
+        // Butonların oluşturulması
         cleanTempButton = new JButton("Geçici Dosyaları Temizle");
         stopAppsButton = new JButton("Seçili Uygulamaları Kapat");
         stopServicesButton = new JButton("Seçili Servisleri Durdur");
         stopRecommendedServicesButton = new JButton("Tavsiye Edilenleri Otomatik Durdur");
+        disableTransparencyButton = new JButton("Saydamlığı Kapat");
+        activatePowerModeButton = new JButton("Nihai Performans Modunu Etkinleştir");
+        removeWindowsAppsButton = new JButton("Windows Uygulamalarını Kaldır");
 
+        // Uygulama panelinin oluşturulması
         appsPanel = new JPanel();
         appsPanel.setLayout(new BoxLayout(appsPanel, BoxLayout.Y_AXIS));
         appsPanel.setBorder(BorderFactory.createTitledBorder("Kapatmak İstediğiniz Uygulamaları Seçin"));
-
         for (Map.Entry<String, String> entry : appsMap.entrySet()) {
             JCheckBox checkBox = new JCheckBox(entry.getKey());
             appCheckBoxes.put(entry.getKey(), checkBox);
             appsPanel.add(checkBox);
         }
 
+        // Hizmet panelinin oluşturulması
         servicesPanel = new JPanel();
         servicesPanel.setLayout(new BoxLayout(servicesPanel, BoxLayout.Y_AXIS));
         servicesPanel.setBorder(BorderFactory.createTitledBorder("Çalışmaya Devam Edecek Hizmetleri Seçin"));
-
-        for (String serviceName : recommendedServices) {
-            JCheckBox checkBox = new JCheckBox(serviceName);
-            recommendedServiceCheckBoxes.put(serviceName, checkBox);
+        // Hizmet kodunu alıp, karşılığında bulunan kullanıcı dostu adı gösterecek şekilde düzenliyoruz.
+        for (String serviceCode : recommendedServices) {
+            String displayName = null;
+            for (Map.Entry<String, String> entry : servicesMap.entrySet()) {
+                if (entry.getValue().equalsIgnoreCase(serviceCode)) {
+                    displayName = entry.getKey();
+                    break;
+                }
+            }
+            if (displayName == null) {
+                displayName = serviceCode;
+            }
+            JCheckBox checkBox = new JCheckBox(displayName);
+            recommendedServiceCheckBoxes.put(serviceCode, checkBox);
             servicesPanel.add(checkBox);
         }
 
+        // Buton panelinin oluşturulması ve eklenmesi
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.add(cleanTempButton);
         buttonsPanel.add(stopAppsButton);
         buttonsPanel.add(stopServicesButton);
         buttonsPanel.add(stopRecommendedServicesButton);
+        buttonsPanel.add(disableTransparencyButton);
+        buttonsPanel.add(activatePowerModeButton);
+        buttonsPanel.add(removeWindowsAppsButton);
 
         setLayout(new BorderLayout());
         add(buttonsPanel, BorderLayout.NORTH);
@@ -147,12 +176,14 @@ public class CleanerUI extends JFrame {
         centerPanel.add(new JScrollPane(servicesPanel));
         add(centerPanel, BorderLayout.CENTER);
 
+        // Temp temizleme işlemi
         cleanTempButton.addActionListener(e -> {
             TempCleaner cleaner = new TempCleaner();
             cleaner.cleanTempFolders();
             JOptionPane.showMessageDialog(this, "Temp klasörleri temizlendi.");
         });
 
+        // Seçili uygulamaları kapatma işlemi
         stopAppsButton.addActionListener(e -> {
             AppManager appManager = new AppManager();
             for (Map.Entry<String, JCheckBox> entry : appCheckBoxes.entrySet()) {
@@ -164,6 +195,7 @@ public class CleanerUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Seçili uygulamalar kapatıldı.");
         });
 
+        // Seçili servisleri durdurma işlemi
         stopServicesButton.addActionListener(e -> {
             WindowsServicesManager serviceManager = new WindowsServicesManager();
             for (Map.Entry<String, JCheckBox> entry : recommendedServiceCheckBoxes.entrySet()) {
@@ -174,6 +206,7 @@ public class CleanerUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Seçili hizmetler durduruldu.");
         });
 
+        // Tavsiye edilen, fakat seçilmeyen servislerin durdurulması
         stopRecommendedServicesButton.addActionListener(e -> {
             WindowsServicesManager serviceManager = new WindowsServicesManager();
             for (String service : recommendedServices) {
@@ -184,11 +217,45 @@ public class CleanerUI extends JFrame {
             }
             JOptionPane.showMessageDialog(this, "Seçmediğiniz tavsiye edilen hizmetler durduruldu.");
         });
+
+        // Saydamlık efektlerini kapatma işlemi
+        disableTransparencyButton.addActionListener(e -> {
+            try {
+                String command = "reg add \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\" /v EnableTransparency /t REG_DWORD /d 0 /f";
+                Process process = Runtime.getRuntime().exec(command);
+                int exitCode = process.waitFor();
+
+                if (exitCode == 0) {
+                    JOptionPane.showMessageDialog(this, "Saydamlık efektleri başarıyla kapatıldı.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Saydamlık kapatma işlemi başarısız oldu.");
+                }
+            } catch (IOException | InterruptedException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Bir hata oluştu: " + ex.getMessage());
+            }
+        });
+
+        // Nihai Performans modunu etkinleştirme işlemi
+        activatePowerModeButton.addActionListener(e -> {
+            new Thread(() -> {
+                PowerModeActivator.main(new String[]{});
+            }).start();
+            JOptionPane.showMessageDialog(this, "Nihai Performans modu etkinleştirme işlemi başlatıldı.");
+        });
+
+        // Windows uygulamalarını kaldırma işlemi
+        removeWindowsAppsButton.addActionListener(e -> {
+            new Thread(() -> {
+                RemoveWindowsApps.main(new String[]{});
+            }).start();
+            JOptionPane.showMessageDialog(this, "Windows uygulamaları kaldırma işlemleri başlatıldı.");
+        });
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            CleanerUI ui = new CleanerUI();
+            Systra ui = new Systra();
             ui.setVisible(true);
         });
     }
