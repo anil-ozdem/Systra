@@ -3,30 +3,34 @@ package org.example;
 import javax.swing.*;
 import javax.swing.ScrollPaneConstants;
 import java.awt.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.text.Collator;
 import java.util.*;
 import java.util.List;
 
-public class Systra extends JFrame {
+public class SystraNewUI extends JFrame {
 
-    private JButton cleanTempButton;
-    private JButton stopAppsButton;
-    private JButton stopServicesButton;
-    private JButton disableTransparencyButton;
-    private JButton activatePowerModeButton;
-    private JButton removeWindowsAppsButton;
+    // Butonlar
+    private JButton btnCleanTemp;
+    private JButton btnStopApps;
+    private JButton btnUpdateServices;
+    private JButton btnDisableTransparency;
+    private JButton btnActivatePower;
+    private JButton btnRemoveWindowsApps;
 
+    // Tab'lerde gösterilecek paneller
     private JPanel appsPanel;
     private JPanel servicesPanel;
 
+    // Veriler
     private Map<String, String> appsMap = new LinkedHashMap<>();
     private Map<String, JCheckBox> appCheckBoxes = new LinkedHashMap<>();
 
     private Map<String, String> servicesMap = new LinkedHashMap<>();
-    private Map<String, JCheckBox> recommendedServiceCheckBoxes = new LinkedHashMap<>();
+    private Map<String, JCheckBox> serviceCheckBoxes = new LinkedHashMap<>();
 
-    // İşlem yapılacak hizmet kodlarını içeren dizi
+    // İşlem yapılacak hizmet kodları
     private final String[] recommendedServices = {
             "SCardSvr",
             "ScDeviceEnum",
@@ -61,12 +65,13 @@ public class Systra extends JFrame {
             "MapsBroker"
     };
 
+    // Türkçe alfabe sıralaması için Collator
     private final Collator collator = Collator.getInstance(new Locale("tr", "TR"));
 
-    public Systra() {
-        setTitle("Systra");
-        setSize(1000, 1000);
+    public SystraNewUI() {
+        super("Systra - Yeni Arayüz");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         collator.setStrength(Collator.PRIMARY);
 
@@ -76,19 +81,36 @@ public class Systra extends JFrame {
         buildAppsPanel();
         buildServicesPanel();
 
-        // Butonları initialize edelim:
-        cleanTempButton = new JButton("Geçici Dosyaları Temizle");
-        stopAppsButton = new JButton("Arka Planda Çalışan Uygulamaları Kapat");
-        stopServicesButton = new JButton("Tavsiye Edilen Hizmetleri Durdur");
-        disableTransparencyButton = new JButton("Saydamlığı Kapat");
-        activatePowerModeButton = new JButton("Nihai Performans Modunu Etkinleştir");
-        removeWindowsAppsButton = new JButton("Windows Uygulamalarını Kaldır");
+        // JTabbedPane kullanarak iki ayrı sekmeye ayırıyoruz.
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Uygulamalar", new JScrollPane(appsPanel));
+        tabbedPane.addTab("Hizmetler", new JScrollPane(servicesPanel));
 
-        buildButtonsPanel();
-        buildLayout();
+        // Alt kısımda kontrol butonlarının bulunduğu panel.
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        btnCleanTemp = new JButton("Geçici Dosyaları Temizle");
+        btnStopApps = new JButton("Arka Planda Çalışan Uygulamaları Kapat");
+        btnUpdateServices = new JButton("Hizmetleri Güncelle");
+        btnDisableTransparency = new JButton("Saydamlığı Kapat");
+        btnActivatePower = new JButton("Nihai Performans Modunu Etkinleştir");
+        btnRemoveWindowsApps = new JButton("Windows Uygulamalarını Kaldır");
+
+        buttonPanel.add(btnCleanTemp);
+        buttonPanel.add(btnStopApps);
+        buttonPanel.add(btnUpdateServices);
+        buttonPanel.add(btnDisableTransparency);
+        buttonPanel.add(btnActivatePower);
+        buttonPanel.add(btnRemoveWindowsApps);
+
+        // Layout: TabbedPane CENTER, Button Panel SOUTH
+        setLayout(new BorderLayout());
+        add(tabbedPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
         wireActions();
     }
 
+    // Uygulama verilerini yükler
     private void loadApps() {
         appsMap.put("Ses Kaydedici", "SoundRecorder.exe");
         appsMap.put("Paint", "mspaint.exe");
@@ -110,7 +132,7 @@ public class Systra extends JFrame {
         appsMap.put("Microsoft Store", "WinStore.App.exe");
     }
 
-    // Hizmet bilgilerini yükler
+    // Hizmet verilerini yükler
     private void loadServices() {
         servicesMap.put("Akıllı Kart Hizmeti", "SCardSvr");
         servicesMap.put("Battle Eye", "BEService");
@@ -149,20 +171,20 @@ public class Systra extends JFrame {
 
         List<String> sortedApps = new ArrayList<>(appsMap.keySet());
         sortedApps.sort(collator);
-        for (String appName : sortedApps) {
-            JCheckBox cb = new JCheckBox(appName);
-            appCheckBoxes.put(appName, cb);
+        for (String app : sortedApps) {
+            JCheckBox cb = new JCheckBox(app);
+            appCheckBoxes.put(app, cb);
             appsPanel.add(cb);
         }
     }
 
-    // Hizmet panelini, önerilen hizmet kodlarına göre (kullanıcı dostu isimleri) alfabetik sıralı oluşturur
+    // Hizmet panelini, recommendedServices dizisindeki kodlara göre,
+    // aradaki eşleşmeden kullanıcı dostu isimleri bularak alfabetik sıraya göre oluşturur.
     private void buildServicesPanel() {
         servicesPanel = new JPanel();
         servicesPanel.setLayout(new BoxLayout(servicesPanel, BoxLayout.Y_AXIS));
         servicesPanel.setBorder(BorderFactory.createTitledBorder("Çalışmaya Devam Edecek Hizmetleri Seçin"));
 
-        // TreeMap kullanarak kullanıcı dostu isimlere göre sıralama
         TreeMap<String, String> sortedServices = new TreeMap<>(collator);
         for (String code : recommendedServices) {
             String display = null;
@@ -179,158 +201,135 @@ public class Systra extends JFrame {
         }
         for (Map.Entry<String, String> entry : sortedServices.entrySet()) {
             JCheckBox cb = new JCheckBox(entry.getKey());
-            recommendedServiceCheckBoxes.put(entry.getValue(), cb);
+            serviceCheckBoxes.put(entry.getValue(), cb);
             servicesPanel.add(cb);
         }
     }
 
-    private void buildButtonsPanel() {
-        JPanel buttonsPanel = new JPanel();
-        // Butonları istenen sıralamada ekliyoruz:
-        buttonsPanel.add(stopAppsButton);              // Arka Planda Çalışan Uygulamaları Kapat
-        buttonsPanel.add(cleanTempButton);             // Geçici Dosyaları Temizle
-        buttonsPanel.add(activatePowerModeButton);       // Nihai Performans Modunu Etkinleştir
-        buttonsPanel.add(disableTransparencyButton);     // Saydamlığı Kapat
-        buttonsPanel.add(stopServicesButton);          // Hizmetleri Durdur
-        buttonsPanel.add(removeWindowsAppsButton);       // Windows Uygulamalarını Kaldır
-        add(buttonsPanel, BorderLayout.NORTH);
-    }
-
-    private void buildLayout() {
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
-        centerPanel.add(new JScrollPane(appsPanel));
-        centerPanel.add(new JScrollPane(servicesPanel));
-        add(centerPanel, BorderLayout.CENTER);
-    }
-
+    // Aksiyonları (ActionListener'ları) bağlar
     private void wireActions() {
-        cleanTempButton.addActionListener(e -> {
-            TempCleaner cleaner = new TempCleaner();
-            cleaner.cleanTempFolders();
+        btnCleanTemp.addActionListener(e -> {
+            new TempCleaner().cleanTempFolders();
             JOptionPane.showMessageDialog(this, "Temp klasörleri temizlendi.");
         });
 
-        // Uygulama bölümünde: işaretli olanlar açık kalsın, işaretlenmeyenler kapatılsın.
-        stopAppsButton.addActionListener(e -> {
-            AppManager appManager = new AppManager();
+        // Uygulama bölümünde: yalnızca işaretli olanlar kalır; diğerleri kapatılır.
+        btnStopApps.addActionListener(e -> {
+            AppManager am = new AppManager();
             for (Map.Entry<String, JCheckBox> entry : appCheckBoxes.entrySet()) {
                 if (!entry.getValue().isSelected()) {
-                    String processName = appsMap.get(entry.getKey());
-                    appManager.stopApp(processName);
+                    am.stopApp(appsMap.get(entry.getKey()));
                 }
             }
-            JOptionPane.showMessageDialog(this,
-                    "Seçilen uygulamalar dışındaki uygulamaların çalışması durduruldu.");
+            JOptionPane.showMessageDialog(this, "Seçilen uygulamalar dışındaki uygulamaların çalışması durduruldu.");
         });
 
-        // Hizmetlerde: sadece işaretli olanlar çalışmaya devam etsin; işaretli olmayanlar disable edilsin.
-        stopServicesButton.addActionListener(e -> {
-            WindowsServicesManager serviceManager = new WindowsServicesManager();
-            for (Map.Entry<String, JCheckBox> entry : recommendedServiceCheckBoxes.entrySet()) {
+        // Hizmetlerde: sadece işaretli olanlar çalışmaya devam etsin,
+        // diğerlerinin disable edilmesini sağlar.
+        btnUpdateServices.addActionListener(e -> {
+            WindowsServicesManager wsm = new WindowsServicesManager();
+            for (Map.Entry<String, JCheckBox> entry : serviceCheckBoxes.entrySet()) {
                 if (!entry.getValue().isSelected()) {
-                    serviceManager.disableService(entry.getKey());
+                    wsm.disableService(entry.getKey());
                 }
             }
             JOptionPane.showMessageDialog(this,
                     "İşaretli olmayan hizmetler durduruldu; yalnızca seçili hizmetler çalışıyor.");
         });
 
-        disableTransparencyButton.addActionListener(e -> {
+        btnDisableTransparency.addActionListener(e -> {
             try {
-                String command = "reg add \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\" " +
+                String cmd = "reg add \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\" " +
                         "/v EnableTransparency /t REG_DWORD /d 0 /f";
-                Process process = Runtime.getRuntime().exec(command);
-                int exitCode = process.waitFor();
+                Process p = Runtime.getRuntime().exec(cmd);
+                int exitCode = p.waitFor();
                 if (exitCode == 0) {
                     JOptionPane.showMessageDialog(this, "Saydamlık efektleri başarıyla kapatıldı.");
                 } else {
                     JOptionPane.showMessageDialog(this, "Saydamlık kapatma işlemi başarısız oldu.");
                 }
-            } catch (IOException | InterruptedException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Bir hata oluştu: " + ex.getMessage());
             }
         });
 
-        activatePowerModeButton.addActionListener(e -> {
+        btnActivatePower.addActionListener(e -> {
             new Thread(() -> PowerModeActivator.main(new String[]{})).start();
             JOptionPane.showMessageDialog(this, "Nihai Performans modu etkinleştirme işlemi başlatıldı.");
         });
 
-        removeWindowsAppsButton.addActionListener(e -> {
-            showWindowsAppsSelectionDialog();
-        });
+        btnRemoveWindowsApps.addActionListener(e -> showWindowsAppsSelectionDialog());
     }
 
-    // Windows Uygulamaları için seçim diyalogunu oluşturur
+    // Windows Uygulamaları için seçim diyalogu
     private void showWindowsAppsSelectionDialog() {
-        Map<String, String> windowsAppsMap = new LinkedHashMap<>();
-        windowsAppsMap.put("Cortana", "Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage");
-        windowsAppsMap.put("3D Builder", "Get-AppxPackage *3dbuilder* | Remove-AppxPackage");
-        windowsAppsMap.put("3D Uygulamalar", "Get-AppxPackage *3d* | Remove-AppxPackage");
-        windowsAppsMap.put("Alarmlar", "Get-AppxPackage *alarms* | Remove-AppxPackage");
-        windowsAppsMap.put("Get Started", "Get-AppxPackage *getstarted* | Remove-AppxPackage");
-        windowsAppsMap.put("Bing Finance", "Get-AppxPackage *bingfinance* | Remove-AppxPackage");
-        windowsAppsMap.put("Bing", "Get-AppxPackage *bing* | Remove-AppxPackage");
-        windowsAppsMap.put("Feedback", "Get-AppxPackage *feedback* | Remove-AppxPackage");
-        windowsAppsMap.put("Haritalar", "Get-AppxPackage *maps* | Remove-AppxPackage");
-        windowsAppsMap.put("Calculator", "Get-AppxPackage *calculator* | Remove-AppxPackage");
-        windowsAppsMap.put("Camera", "Get-AppxPackage *camera* | Remove-AppxPackage");
-        windowsAppsMap.put("People", "Get-AppxPackage *people* | Remove-AppxPackage");
-        windowsAppsMap.put("Messaging", "Get-AppxPackage *messaging* | Remove-AppxPackage");
-        windowsAppsMap.put("Solitaire", "Get-AppxPackage *solitaire* | Remove-AppxPackage");
-        windowsAppsMap.put("Wallet", "Get-AppxPackage *wallet* | Remove-AppxPackage");
-        windowsAppsMap.put("Connectivity Store", "Get-AppxPackage *connectivitystore* | Remove-AppxPackage");
-        windowsAppsMap.put("Zune", "Get-AppxPackage *zune* | Remove-AppxPackage");
-        windowsAppsMap.put("Office Hub", "Get-AppxPackage *officehub* | Remove-AppxPackage");
-        windowsAppsMap.put("OneNote", "Get-AppxPackage *onenote* | Remove-AppxPackage");
-        windowsAppsMap.put("Sound Recorder", "Get-AppxPackage *soundrecorder* | Remove-AppxPackage");
-        windowsAppsMap.put("Skype", "Get-AppxPackage *skypeapp* | Remove-AppxPackage");
-        windowsAppsMap.put("Sway", "Get-AppxPackage *sway* | Remove-AppxPackage");
-        windowsAppsMap.put("Communications Apps", "Get-AppxPackage *communicationsapps* | Remove-AppxPackage");
-        windowsAppsMap.put("Comms Phone", "Get-AppxPackage *commsphone* | Remove-AppxPackage");
-        windowsAppsMap.put("Windows Phone", "Get-AppxPackage *windowsphone* | Remove-AppxPackage");
-        windowsAppsMap.put("App Connector", "Get-AppxPackage *appconnector* | Remove-AppxPackage");
-        windowsAppsMap.put("App Installer", "Get-AppxPackage *appinstaller* | Remove-AppxPackage");
-        windowsAppsMap.put("OneConnect", "Get-AppxPackage *oneconnect* | Remove-AppxPackage");
-        windowsAppsMap.put("Holographic", "Get-AppxPackage *holographic* | Remove-AppxPackage");
-        windowsAppsMap.put("Xbox", "Get-AppxPackage *xbox* | Remove-AppxPackage");
-        windowsAppsMap.put("Sticky Notes", "Get-AppxPackage *sticky* | Remove-AppxPackage");
+        Map<String, String> winApps = new LinkedHashMap<>();
+        winApps.put("Cortana", "Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage");
+        winApps.put("3D Builder", "Get-AppxPackage *3dbuilder* | Remove-AppxPackage");
+        winApps.put("3D Uygulamalar", "Get-AppxPackage *3d* | Remove-AppxPackage");
+        winApps.put("Alarmlar", "Get-AppxPackage *alarms* | Remove-AppxPackage");
+        winApps.put("Get Started", "Get-AppxPackage *getstarted* | Remove-AppxPackage");
+        winApps.put("Bing Finance", "Get-AppxPackage *bingfinance* | Remove-AppxPackage");
+        winApps.put("Bing", "Get-AppxPackage *bing* | Remove-AppxPackage");
+        winApps.put("Feedback", "Get-AppxPackage *feedback* | Remove-AppxPackage");
+        winApps.put("Haritalar", "Get-AppxPackage *maps* | Remove-AppxPackage");
+        winApps.put("Calculator", "Get-AppxPackage *calculator* | Remove-AppxPackage");
+        winApps.put("Camera", "Get-AppxPackage *camera* | Remove-AppxPackage");
+        winApps.put("People", "Get-AppxPackage *people* | Remove-AppxPackage");
+        winApps.put("Messaging", "Get-AppxPackage *messaging* | Remove-AppxPackage");
+        winApps.put("Solitaire", "Get-AppxPackage *solitaire* | Remove-AppxPackage");
+        winApps.put("Wallet", "Get-AppxPackage *wallet* | Remove-AppxPackage");
+        winApps.put("Connectivity Store", "Get-AppxPackage *connectivitystore* | Remove-AppxPackage");
+        winApps.put("Zune", "Get-AppxPackage *zune* | Remove-AppxPackage");
+        winApps.put("Office Hub", "Get-AppxPackage *officehub* | Remove-AppxPackage");
+        winApps.put("OneNote", "Get-AppxPackage *onenote* | Remove-AppxPackage");
+        winApps.put("Sound Recorder", "Get-AppxPackage *soundrecorder* | Remove-AppxPackage");
+        winApps.put("Skype", "Get-AppxPackage *skypeapp* | Remove-AppxPackage");
+        winApps.put("Sway", "Get-AppxPackage *sway* | Remove-AppxPackage");
+        winApps.put("Communications Apps", "Get-AppxPackage *communicationsapps* | Remove-AppxPackage");
+        winApps.put("Comms Phone", "Get-AppxPackage *commsphone* | Remove-AppxPackage");
+        winApps.put("Windows Phone", "Get-AppxPackage *windowsphone* | Remove-AppxPackage");
+        winApps.put("App Connector", "Get-AppxPackage *appconnector* | Remove-AppxPackage");
+        winApps.put("App Installer", "Get-AppxPackage *appinstaller* | Remove-AppxPackage");
+        winApps.put("OneConnect", "Get-AppxPackage *oneconnect* | Remove-AppxPackage");
+        winApps.put("Holographic", "Get-AppxPackage *holographic* | Remove-AppxPackage");
+        winApps.put("Xbox", "Get-AppxPackage *xbox* | Remove-AppxPackage");
+        winApps.put("Sticky Notes", "Get-AppxPackage *sticky* | Remove-AppxPackage");
 
-        // Alfabetik sıralama: case-insensitive
-        List<String> keys = new ArrayList<>(windowsAppsMap.keySet());
-        Collections.sort(keys, String.CASE_INSENSITIVE_ORDER);
+        // Filan sıralama: alfabetik, case-insensitive
+        List<String> sortedKeys = new ArrayList<>(winApps.keySet());
+        Collections.sort(sortedKeys, String.CASE_INSENSITIVE_ORDER);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        Map<String, JCheckBox> checkBoxMap = new LinkedHashMap<>();
-        for (String key : keys) {
+        JPanel winPanel = new JPanel();
+        winPanel.setLayout(new BoxLayout(winPanel, BoxLayout.Y_AXIS));
+        Map<String, JCheckBox> winCheckBoxes = new LinkedHashMap<>();
+        for (String key : sortedKeys) {
             JCheckBox cb = new JCheckBox(key);
             cb.setSelected(false);
-            checkBoxMap.put(key, cb);
-            panel.add(cb);
+            winCheckBoxes.put(key, cb);
+            winPanel.add(cb);
         }
-        panel.revalidate();
+        winPanel.revalidate();
 
-        JScrollPane scrollPane = new JScrollPane(panel);
-        scrollPane.setPreferredSize(new Dimension(320, 400));
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        JScrollPane winScroll = new JScrollPane(winPanel);
+        winScroll.setPreferredSize(new Dimension(320, 400));
+        winScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        int result = JOptionPane.showConfirmDialog(
+        int res = JOptionPane.showConfirmDialog(
                 this,
-                scrollPane,
+                winScroll,
                 "Kalmasını İstediğiniz Windows Uygulamalarını Seçin\n(Not Seçilmeyenler Kaldırılacaktır)",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE
         );
 
-        if (result == JOptionPane.OK_OPTION) {
+        if (res == JOptionPane.OK_OPTION) {
             new Thread(() -> {
-                for (Map.Entry<String, String> entry : windowsAppsMap.entrySet()) {
+                for (Map.Entry<String, String> entry : winApps.entrySet()) {
                     String appName = entry.getKey();
                     String command = entry.getValue();
-                    JCheckBox cb = checkBoxMap.get(appName);
+                    JCheckBox cb = winCheckBoxes.get(appName);
                     if (cb != null && !cb.isSelected()) {
                         runPowerShell(command);
                     }
@@ -346,13 +345,12 @@ public class Systra extends JFrame {
         try {
             ProcessBuilder builder = new ProcessBuilder("powershell.exe", "-Command", command);
             builder.redirectErrorStream(true);
-            Process process = builder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            Process p = builder.start();
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while (br.readLine() != null) {
+                // Çıktı loglanıyor (isteğe bağlı)
             }
-            process.waitFor();
+            p.waitFor();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -364,9 +362,6 @@ public class Systra extends JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        SwingUtilities.invokeLater(() -> {
-            Systra ui = new Systra();
-            ui.setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new SystraNewUI().setVisible(true));
     }
 }
