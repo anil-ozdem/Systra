@@ -5,6 +5,8 @@ import java.io.*;
 public class RemoveWindowsApps {
 
     public static void main(String[] args) {
+
+        // Silinecek Uygulamalar
         String[] commands = {
                 "Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage", // Cortana
                 "Get-AppxPackage *3dbuilder* | Remove-AppxPackage",
@@ -44,6 +46,7 @@ public class RemoveWindowsApps {
         }
     }
 
+    // Powershell ile silinecek uygulamaları getirip çalıştırır
     public static void runPowerShell(String command) {
         try {
             ProcessBuilder builder = new ProcessBuilder("powershell.exe", "-Command", command);

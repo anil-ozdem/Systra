@@ -61,6 +61,7 @@ public class Systra extends JFrame {
             "MapsBroker"
     };
 
+    // Alfabetik sıralama
     private final Collator collator = Collator.getInstance(new Locale("tr", "TR"));
 
     public Systra() {
@@ -76,7 +77,7 @@ public class Systra extends JFrame {
         buildAppsPanel();
         buildServicesPanel();
 
-        // Butonları initialize edelim:
+        // Butonlar
         cleanTempButton = new JButton("Geçici Dosyaları Temizle");
         stopAppsButton = new JButton("Arka Planda Çalışan Uygulamaları Kapat");
         stopServicesButton = new JButton("Tavsiye Edilen Hizmetleri Durdur");
@@ -89,6 +90,7 @@ public class Systra extends JFrame {
         wireActions();
     }
 
+    // Uygulama ekleme alanaı
     private void loadApps() {
         appsMap.put("Ses Kaydedici", "SoundRecorder.exe");
         appsMap.put("Paint", "mspaint.exe");
@@ -110,7 +112,7 @@ public class Systra extends JFrame {
         appsMap.put("Microsoft Store", "WinStore.App.exe");
     }
 
-    // Hizmet bilgilerini yükler
+    // Tavsiye Edilen Hizmetler
     private void loadServices() {
         servicesMap.put("Akıllı Kart Hizmeti", "SCardSvr");
         servicesMap.put("Battle Eye", "BEService");
@@ -141,7 +143,7 @@ public class Systra extends JFrame {
         servicesMap.put("Telefon Hizmeti", "PhoneSvc");
     }
 
-    // Uygulama panelini alfabetik sıraya göre oluşturur
+    // Alfabetik sıralama
     private void buildAppsPanel() {
         appsPanel = new JPanel();
         appsPanel.setLayout(new BoxLayout(appsPanel, BoxLayout.Y_AXIS));
@@ -186,7 +188,7 @@ public class Systra extends JFrame {
 
     private void buildButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
-        // Butonları istenen sıralamada ekliyoruz:
+
         buttonsPanel.add(stopAppsButton);              // Arka Planda Çalışan Uygulamaları Kapat
         buttonsPanel.add(cleanTempButton);             // Geçici Dosyaları Temizle
         buttonsPanel.add(activatePowerModeButton);       // Nihai Performans Modunu Etkinleştir
@@ -262,7 +264,7 @@ public class Systra extends JFrame {
         });
     }
 
-    // Windows Uygulamaları için seçim diyalogunu oluşturur
+    // Windows Uygulamaları için seçim oluşturur
     private void showWindowsAppsSelectionDialog() {
         Map<String, String> windowsAppsMap = new LinkedHashMap<>();
         windowsAppsMap.put("Cortana", "Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage");

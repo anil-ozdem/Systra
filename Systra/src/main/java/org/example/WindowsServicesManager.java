@@ -5,7 +5,7 @@ import java.io.IOException;
 public class WindowsServicesManager {
 
     public void disableService(String serviceName) {
-        // Komut sırasını değiştirdim: önce hizmeti durdur, sonra startupType'ı Disabled yap.
+        // Önce hizmeti durdur, sonra startupType'ı Disabled yap
         String command = "powershell.exe -Command \"Stop-Service -Name '" + serviceName + "' -Force; " +
                 "Set-Service -Name '" + serviceName + "' -StartupType Disabled\"";
         try {
