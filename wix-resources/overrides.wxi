@@ -1,4 +1,0 @@
-<Include>
-    <!-- JPackage'ın oluşturduğu geçersiz ikon ID'lerini düzeltir -->
-    <?define JpIconId="AppIcon" ?>
-</Include>
