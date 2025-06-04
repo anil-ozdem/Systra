@@ -16,6 +16,8 @@ public class Systra extends JFrame {
     private JButton disableTransparencyButton;
     private JButton activatePowerModeButton;
     private JButton removeWindowsAppsButton;
+    private JButton createRestorePointButton;
+    private JButton applyPerformanceSettingsButton;
 
     private JPanel appsPanel;
     private JPanel servicesPanel;
@@ -84,6 +86,8 @@ public class Systra extends JFrame {
         disableTransparencyButton = new JButton("Saydamlığı Kapat");
         activatePowerModeButton = new JButton("Nihai Performans Modunu Etkinleştir");
         removeWindowsAppsButton = new JButton("Windows Uygulamalarını Kaldır");
+        createRestorePointButton = new JButton("Sistem Geri Yükleme Noktası Oluştur");
+        applyPerformanceSettingsButton = new JButton("En İyi Performans Ayarlarını Uygula");
 
         buildButtonsPanel();
         buildLayout();
@@ -195,6 +199,8 @@ public class Systra extends JFrame {
         buttonsPanel.add(disableTransparencyButton);     // Saydamlığı Kapat
         buttonsPanel.add(stopServicesButton);          // Hizmetleri Durdur
         buttonsPanel.add(removeWindowsAppsButton);       // Windows Uygulamalarını Kaldır
+        buttonsPanel.add(createRestorePointButton);      // Sistem Geri Yükleme Noktası Oluştur
+        buttonsPanel.add(applyPerformanceSettingsButton); // En İyi Performansa Ayarla
         add(buttonsPanel, BorderLayout.NORTH);
     }
 
@@ -261,6 +267,27 @@ public class Systra extends JFrame {
 
         removeWindowsAppsButton.addActionListener(e -> {
             showWindowsAppsSelectionDialog();
+        });
+
+        // Sistem Geri Yükleme Noktası Oluştur butonu
+        createRestorePointButton.addActionListener(e -> {
+            String description = JOptionPane.showInputDialog(this, "Geri yükleme noktası için bir açıklama girin:");
+            if (description != null && !description.trim().isEmpty()) {
+                RestorePointCreator.createRestorePoint(description);
+            } else {
+                JOptionPane.showMessageDialog(this, "Geri yükleme noktası açıklaması boş bırakılamaz.");
+            }
+        });
+
+        // Yeni performans ayarları butonu
+        applyPerformanceSettingsButton.addActionListener(e -> {
+            new Thread(() -> {
+                PerformanceSettings.applyBestPerformance();
+                SwingUtilities.invokeLater(() -> {
+                    JOptionPane.showMessageDialog(this,
+                            "En iyi performans ayarları uygulandı. Tam etkinleşmesi için bilgisayarınızı yeniden başlatmanız gerekebilir.");
+                });
+            }).start();
         });
     }
 
