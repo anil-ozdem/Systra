@@ -1,9 +1,10 @@
 ## Lisans
-Bu yazılım Anıl Özdem tarafından geliştirilmiştir. Tüm hakları saklıdır. Detaylar için [LICENSE.txt](./LICENSE.txt) dosyasına bakınız.
+Bu yazılım, Anıl Özdem tarafından geliştirilmiştir ve **MIT Lisansı** altında yayınlanmıştır. Daha fazla detay için lütfen [LICENSE.txt](./LICENSE.txt) dosyasına bakınız.
 
 ## License
-This software was developed by Anıl Özdem. All rights reserved.  
-For more details, please refer to the [LICENSE.txt](./LICENSE.txt) file.
+This software was developed by Anıl Özdem and is released under the **MIT License**. For more details, please refer to the [LICENSE.txt](./LICENSE.txt) file.
+
+For more details, please refer to the LICENSE.txt file.
 
 Systra – Sistem Optimizasyon Aracı
 Geliştirici: Anıl Özdem
@@ -14,8 +15,8 @@ Systra'nın temel hedefi; Windows tarafından arka planda çalışan gereksiz hi
 
 Hiçbir ön bilgiye gerek duymadan, sadece birkaç adımda sisteminizin daha hızlı, daha verimli ve daha az güç tüketen bir yapıya kavuşmasını sağlar.
 
-
 🚀 Temel Özellikler
+
 ⚙️ Arka planda çalışan uygulamaları kapatma
 
 🧹 Geçici dosyaları temizleme (temp, %temp%, prefetch)
@@ -28,7 +29,12 @@ Hiçbir ön bilgiye gerek duymadan, sadece birkaç adımda sisteminizin daha hı
 
 🗑️ Kullanılmayan Windows uygulamalarını kaldırma
 
+🚀 Görsel Efektleri En İyi Performansa Ayarlama
+
+💾 Sistem Geri Yükleme Noktası Oluşturma
+
 🔍 Özelliklerin Açıklamaları
+
 🔌 Arka Planda Çalışan Uygulamaları Kapat
 Windows, birçok uygulamayı arka planda çalıştırarak gereksiz CPU ve RAM kullanımı oluşturur. Bu özellik sayesinde yalnızca istediğiniz uygulamaların çalışmasına izin verir, diğerlerini devre dışı bırakabilirsiniz.
 
@@ -49,6 +55,12 @@ Gereksiz arka plan hizmetlerini devre dışı bırakarak güç tüketimini ve si
 🗑️ Gereksiz Windows Uygulamalarını Kaldır
 Windows, birçok kullanıcının ihtiyacı olmayan uygulamaları önceden yüklenmiş olarak sunar. Systra, bu uygulamaları kolayca kaldırmanıza ve yalnızca ihtiyacınız olanları bırakmanıza olanak tanır.
 
+🚀 Görsel Efektleri En İyi Performansa Ayarlama
+Windows'un görsel efektleri (animasyonlar, gölgeler vb.) estetik bir deneyim sunsa da, sistem kaynaklarını tüketebilir. Bu özellik, görsel efektleri en düşük seviyeye indirerek sistem performansını artırır.
+
+💾 Sistem Geri Yükleme Noktası Oluşturma
+Önemli sistem değişikliklerinden önce veya belirli aralıklarla bir geri yükleme noktası oluşturmak, olası sorunlarda sistemi önceki sağlam durumuna döndürmeyi sağlar. Bu özellik, tek tıkla yeni bir geri yükleme noktası oluşturmanızı kolaylaştırır.
+
 💻 Sistem Gereksinimleri
 
 Windows 10 veya 11
@@ -68,6 +80,7 @@ Its primary goal is to simplify system cleanup and optimization tasks that would
 Whether it's stopping unnecessary services, removing unused applications, or enabling high-performance settings—Systra makes advanced configurations accessible to everyone, quickly and reliably.
 
 🚀 Core Features
+
 ⚙️ Close background applications
 
 🧹 Clean temporary files (temp, %temp%, prefetch)
@@ -80,7 +93,12 @@ Whether it's stopping unnecessary services, removing unused applications, or ena
 
 🗑️ Remove pre-installed Windows apps
 
+🚀 Adjust Visual Effects for Best Performance
+
+💾 Create System Restore Point
+
 🔍 Feature Descriptions
+
 🔌 Close Background Applications
 Windows often runs unnecessary background apps that consume system resources. This feature disables them, while allowing the user to whitelist essential apps.
 
@@ -98,6 +116,12 @@ Many Windows services run in the background without user interaction. Systra let
 
 🗑️ Remove Unused Windows Applications
 Quickly remove pre-installed apps that are not needed, keeping only what the user chooses to retain.
+
+🚀 Adjust Visual Effects for Best Performance
+While Windows' visual effects (animations, shadows, etc.) offer an aesthetic experience, they consume system resources. This feature minimizes visual effects to boost overall system performance.
+
+💾 Create System Restore Point
+Creating a restore point before significant system changes or at regular intervals allows you to revert your system to a previous, stable state if issues arise. This feature simplifies the creation of new restore points with a single click.
 
 Windows 10 or 11
 

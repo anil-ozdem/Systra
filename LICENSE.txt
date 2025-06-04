@@ -1,39 +1,21 @@
-YAZILIM LİSANS SÖZLEŞMESİ (Software License Agreement)
+MIT License
 
-Yazılım Adı: Systra
-Yazılım Sahibi: Anıl Özdem
-Telif Hakkı © 2025 Anıl Özdem. Tüm hakları saklıdır.
+Copyright (c) 2025 Anıl Özdem
 
-Bu yazılımın tüm hakları Anıl Özdem’e aittir. Yazılım yalnızca yazılım sahibinin izniyle kullanılabilir. Bu yazılımın herhangi bir bölümü, yazarın açık yazılı izni olmaksızın:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-- Kopyalanamaz
-- Dağıtılamaz
-- Satılamaz
-- Tersine mühendislik işlemine tabi tutulamaz
-- Kodları değiştirilemez veya yeniden derlenemez
-- Ticari amaçlarla kullanılamaz
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Yazılımın ticari kullanımı, yalnızca yazılı bir lisans sözleşmesi ile mümkündür. Aksi durumda, izinsiz kullanım telif hakkı ihlali sayılır ve hukuki işlem başlatılabilir.
-
-Kullanıcı, bu yazılımı kullanarak yukarıdaki şartları kabul etmiş sayılır.
-
----
-
-SOFTWARE LICENSE AGREEMENT
-
-Software Name: Systra
-Software Owner: Anıl Özdem
-Copyright © 2025 Anıl Özdem. All rights reserved.
-
-All rights to this software are reserved by Anıl Özdem. This software may only be used with the explicit permission of the author. Without prior written consent, this software or any part of it may not be:
-
-- Copied
-- Distributed
-- Sold
-- Reverse-engineered
-- Modified or recompiled
-- Used for commercial purposes
-
-Commercial use is only permitted through a formal license agreement. Unauthorized use of this software constitutes a copyright violation and may result in legal action.
-
-By using this software, the user agrees to the terms and conditions outlined above.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
