@@ -25,11 +25,14 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.frimtec</groupId>
+            <artifactId>jpse</artifactId>
+            <version>1.3.5</version> </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Java derleyici plugin -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
@@ -39,7 +42,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Jar plugin: main class'ı belirt -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -53,7 +55,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade plugin: bağımlılıkları jar içine göm -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
