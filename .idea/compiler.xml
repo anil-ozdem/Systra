@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="pc-optimizer" />
+        <module name="CosmicAutomation" />
+        <module name="Systra" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pc-optimizer" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
