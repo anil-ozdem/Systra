@@ -1,6 +1,6 @@
 # Maven derleme çıktısı
 /target/
-
+admin_req.manifest
 # IntelliJ IDEA dosyaları
 .idea/
 *.iml
