@@ -61,6 +61,24 @@ Windows'un görsel efektleri (animasyonlar, gölgeler vb.) estetik bir deneyim s
 💾 Sistem Geri Yükleme Noktası Oluşturma
 Önemli sistem değişikliklerinden önce veya belirli aralıklarla bir geri yükleme noktası oluşturmak, olası sorunlarda sistemi önceki sağlam durumuna döndürmeyi sağlar. Bu özellik, tek tıkla yeni bir geri yükleme noktası oluşturmanızı kolaylaştırır.
 
+⚙️ Kurulum 
+
+Systra programını kullanmaya başlamak için aşağıdaki adımları takip edin.
+
+🌐 İnternet tarayıcınızı açın. (Google Chrome, Edge, Firefox gibi herhangi bir program olabilir.)
+
+🔗 Bu linke tıklayın veya kopyalayıp tarayıcınızın adres çubuğuna yapıştırın:
+
+https://github.com/anil-ozdem/Systra/releases/tag/v1.0
+
+🟢 "Systra.exe" üzerine tıklayıp indirme işlemini başlatın
+
+📂 İndirilen dosyayı bulup açın
+
+▶️ Dosyaya çift tıklayarak programı açın.
+
+▶️ Bazı özelliklerin çalışması için yönetici izni isteyebilir onay vererek kullanmaya başlayabilirsiniz
+
 💻 Sistem Gereksinimleri
 
 Windows 10 veya 11
@@ -122,6 +140,24 @@ While Windows' visual effects (animations, shadows, etc.) offer an aesthetic exp
 
 💾 Create System Restore Point
 Creating a restore point before significant system changes or at regular intervals allows you to revert your system to a previous, stable state if issues arise. This feature simplifies the creation of new restore points with a single click.
+
+⚙️ Installation
+
+Follow the steps below to start using the Systra program.
+
+🌐 Open your internet browser (such as Google Chrome, Edge, Firefox, or any other).
+
+🔗 Click this link or copy and paste it into your browser’s address bar:
+
+https://github.com/anil-ozdem/Systra/releases/tag/v1.0
+
+🟢 Click on "Systra.exe" to start downloading the program.
+
+📂 Locate and open the downloaded file.
+
+▶️ Double-click the file to launch the program.
+
+▶️ Some features may require administrator permission—allow it to start using the program.
 
 Windows 10 or 11
 
