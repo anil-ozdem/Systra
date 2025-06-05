@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
-  <headerType>gui</headerType>
+  <headerType>gui</headerType>  <outfile>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra.exe</outfile>
   <jar>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</jar>
-  <outfile>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -12,12 +11,8 @@
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
-  <manifest></manifest>
+ <manifest>C:\Users\AnilOzdem\IdeaProjects\Systra\app.manifest</manifest>
   <icon>C:\Users\AnilOzdem\IdeaProjects\Systra\target\SystraIcon.ico</icon>
-  <classPath>
-    <mainClass>org.example.Main</mainClass>
-    <cp>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</cp>
-  </classPath>
   <jre>
     <path>jdk17.0.15_6,%EXEDIR%\javafx-sdk-17.0.15\lib</path>
     <requiresJdk>false</requiresJdk>
@@ -26,6 +21,10 @@
     <maxVersion></maxVersion>
     <opt>--add-modules javafx.controls,javafx.fxml --module-path=&quot;%EXEDIR%\javafx-sdk-17.0.15\lib&quot; --add-exports javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</opt>
   </jre>
+  <classPath>
+    <mainClass>org.example.Main</mainClass>
+    <cp>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</cp>
+  </classPath>
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
     <txtFileVersion>Version 1.0.0.0</txtFileVersion>
