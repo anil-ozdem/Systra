@@ -1,18 +1,17 @@
-# Maven derleme çıktısı
 /target/
-admin_req.manifest
-# IntelliJ IDEA dosyaları
 .idea/
+out/
 *.iml
-*.ipr
-*.iws
-
-# Log dosyaları (eğer uygulaman log oluşturuyorsa)
 *.log
+*.class
 
-# macOS specific files
+javafx-sdk*/
+jdk*/
+
+Thumbs.db
+ehthumbs.db
+
 .DS_Store
+__MACOSX/
 
-# Diğer genel geçici dosyalar
-*.swp
-*~
+admin_req.manifest
