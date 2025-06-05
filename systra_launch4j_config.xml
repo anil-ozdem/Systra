@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</jar>
+  <outfile>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\AnilOzdem\IdeaProjects\Systra\target\SystraIcon.ico</icon>
+  <classPath>
+    <mainClass>org.example.Main</mainClass>
+    <cp>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</cp>
+  </classPath>
+  <jre>
+    <path>jdk17.0.15_6,%EXEDIR%\javafx-sdk-17.0.15\lib</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>17</minVersion>
+    <maxVersion></maxVersion>
+    <opt>--add-modules javafx.controls,javafx.fxml --module-path=&quot;%EXEDIR%\javafx-sdk-17.0.15\lib&quot; --add-exports javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>Version 1.0.0.0</txtFileVersion>
+    <fileDescription>Systra - Performans Yönetimi Uygulaması</fileDescription>
+    <copyright>Copyright (c) 2025 Anıl Özdem</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>Version 1.0.0.0</txtProductVersion>
+    <productName>Systra</productName>
+    <companyName>Anıl Özdem</companyName>
+    <internalName>Systra</internalName>
+    <originalFilename>Systra.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>TURKISH</language>
+  </versionInfo>
+</launch4jConfig>

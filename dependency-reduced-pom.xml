@@ -15,17 +15,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>org.example.Systra</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.3.0</version>
         <executions>
@@ -37,9 +26,20 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.example.Systra</mainClass>
+                  <mainClass>org.example.Main</mainClass>
                 </transformer>
+                <transformer />
               </transformers>
+              <filters>
+                <filter>
+                  <artifact>org.openjfx:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
             </configuration>
           </execution>
         </executions>
