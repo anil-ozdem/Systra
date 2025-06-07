@@ -1,0 +1,35 @@
+YAZILIM LİSANS SÖZLEŞMESİ (Software License Agreement)
+
+Yazılım Adı: Systra
+Yazılım Sahibi: Anıl Özdem
+Telif Hakkı © 2025 Anıl Özdem. Tüm hakları saklıdır.
+
+Bu yazılım yalnızca kişisel kullanım içindir. Yazarın izni olmadan;
+- Kopyalanamaz
+- Dağıtılamaz
+- Satılamaz
+- Tersine mühendislik işlemine tabi tutulamaz
+- Kodları değiştirilemez veya yeniden derlenemez
+
+Yazılımın herhangi bir bölümünün izinsiz kullanımı telif hakkı ihlali anlamına gelir ve hukuki işlem başlatılabilir.
+
+Kullanıcı bu yazılımı kullanarak yukarıdaki şartları kabul etmiş sayılır.
+
+--- English ---
+
+Software License Agreement
+
+Software Name: Systra
+Yazılım Sahibi: Anıl Özdem
+Copyright © 2025 Anıl Özdem. All rights reserved.
+
+This software is for personal use only. Without the author's permission, it may not be:
+- Copied
+- Distributed
+- Sold
+- Reverse-engineered
+- Modified or recompiled
+
+Unauthorized use of any part of this software constitutes a copyright infringement and may result in legal action.
+
+By using this software, the user agrees to these terms.
