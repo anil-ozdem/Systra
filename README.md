@@ -1,92 +1,8 @@
-## Lisans
-Bu yazılım, Anıl Özdem tarafından geliştirilmiştir ve **MIT Lisansı** altında yayınlanmıştır. Daha fazla detay için lütfen [LICENSE.txt](./LICENSE.txt) dosyasına bakınız.
+License
+This software was developed by Anıl Özdem and is released under the MIT License. For more details, please refer to the LICENSE.txt file.
 
-## License
-This software was developed by Anıl Özdem and is released under the **MIT License**. For more details, please refer to the [LICENSE.txt](./LICENSE.txt) file.
-
-For more details, please refer to the LICENSE.txt file.
-
-Systra – Sistem Optimizasyon Aracı
-Geliştirici: Anıl Özdem
-
-Systra, Java ile geliştirilmiş, tamamen açık kaynaklı bir masaüstü uygulamasıdır. Windows 10 ve 11 işletim sistemlerinde sistem optimizasyonunu kolaylaştırmak amacıyla geliştirilmiştir. Kullanıcı dostu arayüzü sayesinde teknik bilgisi olmayan kullanıcılar bile, yalnızca birkaç tıklamayla saatler sürebilecek işlemleri dakikalar içinde gerçekleştirebilir.
-
-Systra'nın temel hedefi; Windows tarafından arka planda çalışan gereksiz hizmet ve uygulamaları kontrol altına almak, sistemin güç ve performans ayarlarını optimize etmek ve kullanıcıya bu süreçte tam bir özgürlük sunmaktır. Karmaşık ayarlarla uğraşmadan, tamamen şeffaf bir biçimde çalışan bu araç; kullanım kolaylığı, sade arayüzü ve güvenilir yapısıyla öne çıkmaktadır.
-
-Hiçbir ön bilgiye gerek duymadan, sadece birkaç adımda sisteminizin daha hızlı, daha verimli ve daha az güç tüketen bir yapıya kavuşmasını sağlar.
-
-🚀 Temel Özellikler
-
-⚙️ Arka planda çalışan uygulamaları kapatma
-
-🧹 Geçici dosyaları temizleme (temp, %temp%, prefetch)
-
-⚡ Nihai performans modunu etkinleştirme
-
-🖼️ Saydamlık efektlerini devre dışı bırakma
-
-🛑 Gereksiz hizmetleri durdurma
-
-🗑️ Kullanılmayan Windows uygulamalarını kaldırma
-
-🚀 Görsel Efektleri En İyi Performansa Ayarlama
-
-💾 Sistem Geri Yükleme Noktası Oluşturma
-
-🔍 Özelliklerin Açıklamaları
-
-🔌 Arka Planda Çalışan Uygulamaları Kapat
-Windows, birçok uygulamayı arka planda çalıştırarak gereksiz CPU ve RAM kullanımı oluşturur. Bu özellik sayesinde yalnızca istediğiniz uygulamaların çalışmasına izin verir, diğerlerini devre dışı bırakabilirsiniz.
-
-Not: Sürekli çalışmasını istediğiniz uygulamaları istisna olarak seçebilirsiniz.
-
-🧹 Geçici Dosyaları Temizle
-temp, %temp% ve prefetch klasörleri, zamanla gereksiz veriyle dolar. Bu özellik, güvenli bir şekilde bu klasörleri temizleyerek sistem performansını artırır ve disk alanı kazandırır.
-
-⚡ Nihai Performans Modunu Etkinleştir
-Windows’un güç yönetimi varsayılan olarak performansı sınırlandırabilir. Bu mod, sistemin tüm kaynaklarını tam kapasite kullanmasını sağlar.
-
-🖼️ Saydamlık Efektlerini Kapat
-Saydamlık efektleri estetik olsa da gereksiz GPU kullanımı yaratır. Görsel fark minimumdur, ancak performansa olumlu katkı sağlar.
-
-🛑 Tavsiye Edilen Hizmetleri Durdur
-Gereksiz arka plan hizmetlerini devre dışı bırakarak güç tüketimini ve sistem yükünü azaltır. Kullanıcılar, kullanmaya devam etmek istedikleri hizmetleri işaretleyerek seçim yapabilir.
-
-🗑️ Gereksiz Windows Uygulamalarını Kaldır
-Windows, birçok kullanıcının ihtiyacı olmayan uygulamaları önceden yüklenmiş olarak sunar. Systra, bu uygulamaları kolayca kaldırmanıza ve yalnızca ihtiyacınız olanları bırakmanıza olanak tanır.
-
-🚀 Görsel Efektleri En İyi Performansa Ayarlama
-Windows'un görsel efektleri (animasyonlar, gölgeler vb.) estetik bir deneyim sunsa da, sistem kaynaklarını tüketebilir. Bu özellik, görsel efektleri en düşük seviyeye indirerek sistem performansını artırır.
-
-💾 Sistem Geri Yükleme Noktası Oluşturma
-Önemli sistem değişikliklerinden önce veya belirli aralıklarla bir geri yükleme noktası oluşturmak, olası sorunlarda sistemi önceki sağlam durumuna döndürmeyi sağlar. Bu özellik, tek tıkla yeni bir geri yükleme noktası oluşturmanızı kolaylaştırır.
-
-⚙️ Kurulum 
-
-Systra programını kullanmaya başlamak için aşağıdaki adımları takip edin.
-
-🌐 İnternet tarayıcınızı açın. (Google Chrome, Edge, Firefox gibi herhangi bir program olabilir.)
-
-🔗 Bu linke tıklayın veya kopyalayıp tarayıcınızın adres çubuğuna yapıştırın:
-
-https://github.com/anil-ozdem/Systra/releases/tag/v1.0
-
-🟢 "Systra.exe" üzerine tıklayıp indirme işlemini başlatın
-
-📂 İndirilen dosyayı bulup açın
-
-▶️ Dosyaya çift tıklayarak programı açın.
-
-▶️ Bazı özelliklerin çalışması için yönetici izni isteyebilir onay vererek kullanmaya başlayabilirsiniz
-
-💻 Sistem Gereksinimleri
-
-Windows 10 veya 11
-
-📩 İletişim
-Her türlü geri bildirim, öneri veya hata bildirimi için benimle iletişime geçmekten çekinmeyin:
-Geliştirici: Anıl Özdem
-E-posta: anill.ozdem@gmail.com
+Lisans
+Bu yazılım, Anıl Özdem tarafından geliştirilmiştir ve MIT Lisansı altında yayınlanmıştır. Daha fazla detay için lütfen LICENSE.txt dosyasına bakınız.
 
 🌐 English – Systra: System Optimization Tool
 Developer: Anıl Özdem
@@ -143,21 +59,23 @@ Creating a restore point before significant system changes or at regular interva
 
 ⚙️ Installation
 
-Follow the steps below to start using the Systra program.
+Follow the steps below to start using the Systra program:
 
-🌐 Open your internet browser (such as Google Chrome, Edge, Firefox, or any other).
+Download Systra:
 
-🔗 Click this link or copy and paste it into your browser’s address bar:
+Open your internet browser.
+Navigate to the Systra releases page by clicking the link or copying and pasting it into your browser's address bar: https://github.com/anil-ozdem/Systra/releases/latest
+Scroll down and click on the "Systra.zip" file to download it.
+Extract the Files:
 
-https://github.com/anil-ozdem/Systra/releases/tag/v1.0
+Locate the downloaded "Systra.zip" file (it's usually in your "Downloads" folder).
+Right-click on the file and select "Extract All...". In the window that appears, choose a destination for the extracted files and click "Extract".
+Open the folder containing the extracted files.
+Launch Systra:
 
-🟢 Click on "Systra.exe" to start downloading the program.
-
-📂 Locate and open the downloaded file.
-
-▶️ Double-click the file to launch the program.
-
-▶️ Some features may require administrator permission—allow it to start using the program.
+Double-click the "Systra.exe" application inside the extracted folder to launch the program.
+Some features may require administrator permission to function correctly. If prompted, click "Yes" to grant permission.
+You are now ready to use Systra!
 
 Windows 10 or 11
 
@@ -165,3 +83,88 @@ Windows 10 or 11
 For feedback, suggestions, or bug reports:
 Developer: Anıl Özdem
 Email: anill.ozdem@gmail.com
+
+Systra – Sistem Optimizasyon Aracı
+Geliştirici: Anıl Özdem
+
+Systra, Java ile geliştirilmiş, tamamen açık kaynaklı bir masaüstü uygulamasıdır. Windows 10 ve 11 işletim sistemlerinde sistem optimizasyonunu kolaylaştırmak amacıyla geliştirilmiştir. Kullanıcı dostu arayüzü sayesinde teknik bilgisi olmayan kullanıcılar bile, yalnızca birkaç tıklamayla saatler sürebilecek işlemleri dakikalar içinde gerçekleştirebilir.
+
+Systra'nın temel hedefi; Windows tarafından arka planda çalışan gereksiz hizmet ve uygulamaları kontrol altına almak, sistemin güç ve performans ayarlarını optimize etmek ve kullanıcıya bu süreçte tam bir özgürlük sunmaktır. Karmaşık ayarlarla uğraşmadan, tamamen şeffaf bir biçimde çalışan bu araç; kullanım kolaylığı, sade arayüzü ve güvenilir yapısıyla öne çıkmaktadır.
+
+Hiçbir ön bilgiye gerek duymadan, sadece birkaç adımda sisteminizin daha hızlı, daha verimli ve daha az güç tüketen bir yapıya kavuşmasını sağlar.
+
+🚀 Temel Özellikler
+
+⚙️ Arka planda çalışan uygulamaları kapatma
+
+🧹 Geçici dosyaları temizleme (temp, %temp%, prefetch)
+
+⚡ Nihai performans modunu etkinleştirme
+
+🖼️ Saydamlık efektlerini devre dışı bırakma
+
+🛑 Gereksiz hizmetleri durdurma
+
+🗑️ Kullanılmayan Windows uygulamalarını kaldırma
+
+🚀 Görsel Efektleri En İyi Performansa Ayarlama
+
+💾 Sistem Geri Yükleme Noktası Oluşturma
+
+🔍 Özelliklerin Açıklamaları
+
+🔌 Arka Planda Çalışan Uygulamaları Kapat
+Windows, birçok uygulamayı arka planda çalıştırarak gereksiz CPU ve RAM kullanımı oluşturur. Bu özellik sayesinde yalnızca istediğiniz uygulamaların çalışmasına izin verir, diğerlerini devre dışı bırakabilirsiniz.
+
+Not: Sürekli çalışmasını istediğiniz uygulamaları istisna olarak seçebilirsiniz.
+
+🧹 Geçici Dosyaları Temizle
+temp, %temp% ve prefetch klasörleri, zamanla gereksiz veriyle dolar. Bu özellik, güvenli bir şekilde bu klasörleri temizleyerek sistem performansını artırır ve disk alanı kazandırır.
+
+⚡ Nihai Performans Modunu Etkinleştir
+Windows’un güç yönetimi varsayılan olarak performansı sınırlandırabilir. Bu mod, sistemin tüm kaynaklarını tam kapasite kullanmasını sağlar.
+
+🖼️ Saydamlık Efektlerini Kapat
+Saydamlık efektleri estetik olsa da gereksiz GPU kullanımı yaratır. Görsel fark minimumdur, ancak performansa olumlu katkı sağlar.
+
+🛑 Tavsiye Edilen Hizmetleri Durdur
+Gereksiz arka plan hizmetlerini devre dışı bırakarak güç tüketimini ve sistem yükünü azaltır. Kullanıcılar, kullanmaya devam etmek istedikleri hizmetleri işaretleyerek seçim yapabilir.
+
+🗑️ Gereksiz Windows Uygulamalarını Kaldır
+Windows, birçok kullanıcının ihtiyacı olmayan uygulamaları önceden yüklenmiş olarak sunar. Systra, bu uygulamaları kolayca kaldırmanıza ve yalnızca ihtiyacınız olanları bırakmanıza olanak tanır.
+
+🚀 Görsel Efektleri En İyi Performansa Ayarlama
+Windows'un görsel efektleri (animasyonlar, gölgeler vb.) estetik bir deneyim sunsa da, sistem kaynaklarını tüketebilir. Bu özellik, görsel efektleri en düşük seviyeye indirerek sistem performansını artırır.
+
+💾 Sistem Geri Yükleme Noktası Oluşturma
+Önemli sistem değişikliklerinden önce veya belirli aralıklarla bir geri yükleme noktası oluşturmak, olası sorunlarda sistemi önceki sağlam durumuna döndürmeyi sağlar. Bu özellik, tek tıkla yeni bir geri yükleme noktası oluşturmanızı kolaylaştırır.
+
+⚙️ Kurulum
+
+Systra programını kullanmaya başlamak için aşağıdaki adımları takip edin:
+
+Systra'yı İndirin:
+
+İnternet tarayıcınızı açın.
+Aşağıdaki linke tıklayarak veya kopyalayıp tarayıcınızın adres çubuğuna yapıştırarak Systra'nın yayınlar sayfasına gidin: https://github.com/anil-ozdem/Systra/releases/latest
+Sayfayı aşağı kaydırın ve "Systra.zip" dosyasına tıklayarak indirin.
+Dosyayı Çıkartın:
+
+İndirdiğiniz "Systra.zip" dosyasını bulun (genellikle "İndirilenler" klasöründedir).
+Dosyaya sağ tıklayın ve "Tümünü ayıkla..." seçeneğini seçin. Açılan pencerede dosyaların çıkarılacağı konumu belirleyip "Ayıkla" düğmesine tıklayın.
+Çıkarılan dosyaların bulunduğu klasörü açın.
+Systra'yı Başlatın:
+
+Çıkardığınız klasörün içinde yer alan "Systra.exe" uygulamasına çift tıklayarak programı başlatın.
+Bazı özelliklerin düzgün çalışabilmesi için yönetici izni isteyebilir. Bu durumda, karşınıza çıkan onay penceresine "Evet" diyerek izin vermeniz yeterlidir.
+Artık Systra'yı kullanmaya hazırsınız!
+
+💻 Sistem Gereksinimleri
+
+Windows 10 veya 11
+
+📩 İletişim
+Her türlü geri bildirim, öneri veya hata bildirimi için benimle iletişime geçmekten çekinmeyin:
+Geliştirici: Anıl Özdem
+E-posta: anill.ozdem@gmail.com
+
