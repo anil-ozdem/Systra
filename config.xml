@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</jar>
+  <outfile>C:\Users\AnilOzdem\IdeaProjects\Systra\dist\Systra.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\AnilOzdem\IdeaProjects\Systra\target\SystraIcon.ico</icon>
+  <singleInstance>
+    <mutexName>SystraApplicationMutex</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>org.example.Main</mainClass>
+    <cp>C:\Users\AnilOzdem\IdeaProjects\Systra\target\Systra-1.0-SNAPSHOT.jar</cp>
+  </classPath>
+  <jre>
+    <path>C:\Users\AnilOzdem\IdeaProjects\Systra\bundled-jre</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+  <splash>
+    <file>C:\Users\AnilOzdem\IdeaProjects\Systra\target\SystraWait.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>Stable Version</txtFileVersion>
+    <fileDescription>Systra Application</fileDescription>
+    <copyright>Copyright © 2025 Anıl Özdem</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>Stable Version</txtProductVersion>
+    <productName>Systra</productName>
+    <companyName></companyName>
+    <internalName>Systra</internalName>
+    <originalFilename>Systra.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>TURKISH</language>
+  </versionInfo>
+</launch4jConfig>
